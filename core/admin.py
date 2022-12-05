@@ -6,7 +6,7 @@ from core.models import User
 
 
 @admin.register(User)
-class USerAdmin(UserAdmin):
+class BaseUserAdmin(UserAdmin):
     list_display = ('username', 'first_name', 'last_name', 'email')
     list_filter = ('is_staff', 'is_active', 'is_superuser')
     readonly_fields = ('last_login', 'date_joined',)
