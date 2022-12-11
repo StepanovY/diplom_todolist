@@ -1,6 +1,7 @@
 version: '3.8'
 
 services:
+<<<<<<< HEAD
   front:
     image: sermalenk/skypro-front:lesson-34
     ports:
@@ -26,6 +27,8 @@ services:
     volumes:
       - .env:/todolist/.env
     command: python manage.py migrate
+=======
+>>>>>>> origin/main
   db:
     image: postgres:15.1-alpine
     restart: on-failure
@@ -37,8 +40,11 @@ services:
       - pg_data:/var/lib/postgresql/data
     ports:
       - '${POSTGRES_PORT:-5432}:5432'
+<<<<<<< HEAD
     networks:
       - default
+=======
+>>>>>>> origin/main
     healthcheck:
       test: pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}
       interval: 3s
@@ -46,5 +52,9 @@ services:
       retries: 3
 
 volumes:
+<<<<<<< HEAD
   pg_data:
   frontend:
+=======
+  pg_data:
+>>>>>>> origin/main
