@@ -26,7 +26,9 @@ INSTALLED_APPS = [
     'rest_framework',
     'social_django',
     'corsheaders',
+    'django_filters',
     'core',
+    'goals',
 ]
 
 MIDDLEWARE = [
@@ -97,6 +99,10 @@ USE_I18N = True
 USE_TZ = True
 
 STATIC_URL = 'static/'
+
+REST_FRAMEWORK = {
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination'
+}
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
