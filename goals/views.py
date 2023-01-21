@@ -26,10 +26,12 @@ class GoalCategoryListView(ListAPIView):
     filter_backends = [
         filters.OrderingFilter,
         filters.SearchFilter,
+        DjangoFilterBackend,
     ]
     ordering_fields = ['title', 'created']
     ordering = ['title']
-    search_fields = ['title', 'board']
+    search_fields = ['title']
+    filterset_fields = ['board']
 
     def get_queryset(self):
         return GoalCategory.objects.filter(
