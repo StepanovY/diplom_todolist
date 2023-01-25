@@ -1,33 +1,33 @@
 import pytest
+from django.urls import reverse
 
 
 @pytest.mark.django_db
 def test_board_create(
-    user_factory,
-    get_auth_client,
+        user,
+        get_auth_client,
 ):
-    user = user_factory()
-
     data = {
-        "title": "test board",
+        'title': 'test board',
     }
 
     auth_client = get_auth_client(user)
 
+    url = reverse('board_create')
+
     response = auth_client.post(
-        "/goals/board/create",
+        path=url,
         data=data,
-        content_type="application/json",
     )
 
     assert response.status_code == 201
 
     expected_response = {
-        "id": response.data["id"],
-        "title": "test board",
-        "is_deleted": False,
-        "created": response.data["created"],
-        "updated": response.data["updated"],
+        'id': response.data['id'],
+        'title': 'test board',
+        'is_deleted': False,
+        'created': response.data['created'],
+        'updated': response.data['updated'],
     }
 
     assert response.data == expected_response
@@ -35,22 +35,20 @@ def test_board_create(
 
 @pytest.mark.django_db
 def test_board_create_with_not_auth_user(
-    user_factory,
-    client,
+        client,
 ):
-    user = user_factory()
-
     data = {
-        "title": "test board",
+        'title': 'test board',
     }
 
+    url = reverse('board_create')
+
     response = client.post(
-        "/goals/board/create",
+        path=url,
         data=data,
-        content_type="application/json",
     )
 
     assert response.status_code == 403
     assert response.data == {
-        "detail": "Authentication credentials were not provided."
+        'detail': 'Authentication credentials were not provided.'
     }

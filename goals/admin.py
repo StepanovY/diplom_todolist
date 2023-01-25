@@ -4,8 +4,8 @@ from goals.models import GoalCategory, Goal, GoalComment, Board
 
 
 class GoalCategoryAdmin(admin.ModelAdmin):
-    list_display = ("title", "user", "created", "updated")
-    search_fields = ("title", "user", 'board')
+    list_display = ('title', 'user', 'created', 'updated')
+    search_fields = ('title', 'user', 'board')
 
 
 admin.site.register(GoalCategory, GoalCategoryAdmin)

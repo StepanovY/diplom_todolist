@@ -7,7 +7,7 @@ from tests.factories import GoalCommentFactory
 from tests.factories import GoalFactory
 from tests.factories import UserFactory
 
-pytest_plugins = "tests.fixtures"
+pytest_plugins = 'tests.fixtures'
 
 register(UserFactory)
 register(BoardFactory)

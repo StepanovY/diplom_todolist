@@ -17,8 +17,8 @@ class UserFactory(factory.django.DjangoModelFactory):
     class Meta:
         model = User
 
-    username = factory.Faker("name")
-    password = factory.Faker("password")
+    username = factory.Faker('name')
+    password = factory.Faker('password')
 
     @classmethod
     def _create(cls, model_class, *args, **kwargs):
@@ -30,7 +30,7 @@ class BoardFactory(DatesFactoryMixin):
     class Meta:
         model = Board
 
-    title = factory.Faker("sentence", nb_words=5)
+    title = factory.Faker('sentence', nb_words=5)
 
 
 class BoardParticipantFactory(DatesFactoryMixin):
@@ -46,7 +46,7 @@ class GoalCategoryFactory(DatesFactoryMixin):
         model = GoalCategory
 
     board = factory.SubFactory(BoardFactory)
-    title = factory.Faker("sentence", nb_words=3)
+    title = factory.Faker('sentence', nb_words=3)
     user = factory.SubFactory(UserFactory)
 
 
@@ -56,7 +56,7 @@ class GoalFactory(DatesFactoryMixin):
 
     user = factory.SubFactory(UserFactory)
     category = factory.SubFactory(GoalCategoryFactory)
-    title = factory.Faker("sentence", nb_words=5)
+    title = factory.Faker('sentence', nb_words=5)
 
 
 class GoalCommentFactory(DatesFactoryMixin):
@@ -65,4 +65,4 @@ class GoalCommentFactory(DatesFactoryMixin):
 
     user = factory.SubFactory(UserFactory)
     goal = factory.SubFactory(GoalFactory)
-    text = factory.Faker("sentence", nb_words=10)
+    text = factory.Faker('sentence', nb_words=10)

@@ -2,7 +2,7 @@ FROM python:3.10-slim
 
 WORKDIR /todolist
 
-RUN pip install "poetry==1.2.2"
+RUN pip install 'poetry==1.2.2'
 
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
